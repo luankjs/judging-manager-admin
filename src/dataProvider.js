@@ -8,7 +8,6 @@ const dataProvider= {
   getList: (resource, params) => {
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
-    console.log(params.filter)
     const query = {
       sort: [`${field},${order}`],
       page: page - 1,
@@ -28,11 +27,9 @@ const dataProvider= {
   })),
   
   getMany: (resource, params) => {
-    const query = {
-      filter: JSON.stringify({ id: params.ids }),
-    };
-    const url = `${apiUrl}/${resource}?${stringify(query)}`;
-    return httpClient(url).then(({ json }) => ({ data: json }));
+    const query = {};
+    const url = `${apiUrl}/${resource}?${stringify(query)}&${stringify(params.filter)}`;
+    return httpClient(url).then(({ json }) => ({ data: json.content }));
   },
   
   getManyReference: (resource, params) => {
