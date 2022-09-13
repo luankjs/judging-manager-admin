@@ -5,9 +5,9 @@ const Form = () => {
     <SimpleForm>
       <TextInput source="name" label="Nome" />
       <TextInput source="initials" label="Iniciais" />
-      {/* <ReferenceInput source="judge" reference="judges">
+      <ReferenceInput source="judge" reference="judges">
         <AutocompleteInput optionText="name" optionValue="id" label="Presidente" />
-      </ReferenceInput> */}
+      </ReferenceInput>
     </SimpleForm>
   )
 }
